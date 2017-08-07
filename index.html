@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Giphy Madness</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
+  <h1>Add your Favorite Superhero and animate them!</h1>
 
+
+    <!-- This is where the buttons go for each superhero -->
+    <div id="buttons-view"></div>
+
+
+    <!-- This section is for the form input used to add a superhero -->
+    <form id="superhero-form">
+      <label for="superhero-input">Add a Superhero</label>
+      <input type="text" id="superhero-input"><br>
+      <!-- Button triggers adding superhero to array and creating new button -->
+      <input id="add-superhero" type="submit" value="Submit">
+    </form>
+
+    <!-- This is where the gifs will be rendered -->
+    <div id="superheros"></div>
+
+<!-- Link to local javascript -->
+<script src="assets/javascript/app.js"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -18,6 +36,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
 </body>
 </html>
