@@ -35,7 +35,7 @@
    var heroGif = $(this).attr('data-name')
   // Storing the giphy API for the superhero images
 
-   var queryURL = 'http://api.giphy.com/v1/gifs/search?api_keyc3a6b1024d4240b6a7810e358792f08f&q=' + heroGif + '&limit=10&rating=g'
+   var queryURL = 'http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=' + heroGif + '&limit=10&rating=g'
   // Performing the AJAX GET request
    $.ajax({
      url: queryURL,
@@ -46,9 +46,9 @@
   .done(function (response) {
     console.log(response)
     var imageUrl = response.data.image_original_url
-    var heroImage = $('#superheros')
+    var heroImage = $('<img>')
     heroImage.attr('src', imageUrl)
     heroImage.attr('alt', 'superhero image')
-    $('#superheros').append(catImage)
+    $('#superheros').append(heroImage)
   })
  })
