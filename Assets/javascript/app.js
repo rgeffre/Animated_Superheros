@@ -45,6 +45,7 @@
   // Callback response after the AJAX request comes back
   .done(function (response) {
     console.log(response)
+    // Saving original image url, setting image attibutes and storing images in superheros div
     var imageUrl = response.data.image_original_url
     var heroImage = $('<img>')
     heroImage.attr('src', imageUrl)
@@ -52,3 +53,5 @@
     $('#superheros').append(heroImage)
   })
  })
+
+ // Create image tags to animate gifs and stop them
