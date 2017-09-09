@@ -1,44 +1,14 @@
   // Creating initial array of Superheros
  var heroes = ['Superman', 'Batman', 'Wolverine'];
 
-//displayHero function re-renders the HTML to display the appropriate content
-function displayHero() {
-
-  var heroes = $(this).attr('data-name');
-  var queryURL = 'http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=' +
-      heroGif + '&limit=10&rating=g';
-
-  // Creating the AJAX get request
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-    //callback response after the AJAX request comes back
-  }).done(function(response) {
-
-    console.log(response);
-
-    //creating a div to hold the
-    var heroDiv = $("<div class='hero'>");
-
-    // Storing the rating data
-    var rating = response.Rated;
-
-    // Creating an element to have the rating displayed
-    var pOne = $("<p>").text("Rating: " + rating);
-
-    // Displaying the rating
-    heroDiv.append(pOne);
-  });
-}
-
-// Function for displaying hero data
+  // Function for displaying hero data
   function renderButtons() {
 
-    // Deleting the movies prior to adding new movies
+    // Deleting heroes before adding new ones
     // (this is necessary otherwise you will have repeat buttons)
     $("#hero-buttons").empty();
 
-    // Looping through the array of movies
+    // Looping through the array of heroes
     for (var i = 0; i < heroes.length; i++) {
 
       // Using jQuery and dynamicaly generating buttons for each hero in the array
@@ -63,15 +33,31 @@ function displayHero() {
     // Adding the hero from the textbox to our array
     heroes.push(hero);
 
-    // Calling renderButtons which handles the processing of the array
-    renderButtons();
+    //creating the queryURL using the data stored in the hero variable
+    var queryURL = 'http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=' +
+        hero + '&limit=10&rating=g';
+
+    // Creating the AJAX get request
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+      //callback response after the AJAX request comes back
+    }).done(function(response) {
+
+      console.log(response);
+
+      var reqResults = response.data;
+
+      // Calling renderButtons which handles the processing of the array
+      renderButtons();
+    });
   });
-
-  // Adding a click event listener to all elements with a class of "movie"
-  $(document).on("click", ".hero", displayHero);
-
-  // Calling the renderButtons function to display the intial buttons
+  // Calling renderButtons which handles the processing of the array
   renderButtons();
+
+
+
+
 
 
 
