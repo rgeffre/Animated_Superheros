@@ -1,46 +1,6 @@
   // Creating initial array of Superheros
  var heroes = ['Superman', 'Batman', 'Wolverine'];
 
-//displayHero function displays the content retrieved from the AJAX request
-  function displayHero() {
-    //Creating the variable for the query
-    var queryURL = 'http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=' +
-        hero + '&limit=10&rating=g';
-
-    // Creating the AJAX get request
-    $.ajax({
-      url: queryURL,
-      method: 'GET'
-      //callback response after the AJAX request comes back
-    }).done(function(response) {
-      console.log(response);
-      //saving the image url property
-      var imageURL = response.data.image_original_url;
-
-      //creating a div to hold the images
-      var heroDiv = $("<div class='heroes'>");
-
-      //Creating a paragraph tag for the results rating
-      var p = $("<p>").text('Rating: ' + rating);
-
-      //creating an image tag
-      var heroImage = $('<img>');
-
-      //Setting the heroImage src attributes
-      heroImage.attr("src", imageUrl);
-      heroImage.attr("alt", "superheroes");
-
-      //Appending the paragraph and images to the heroDiv
-      heroDiv.append(p);
-      heroDiv.append(heroImage);
-
-      //Prepending the heroDiv to the #heroes-view div in the HTML
-      $("#heroes-view").prepend(heroDiv);
-    });
-
-  }
-
-
   // Function for displaying hero data
   function renderButtons() {
 
@@ -77,7 +37,45 @@
       renderButtons();
     });
 
-  $(document).on("click", ".hero", renderButtons);
+  //displayHero function displays the content retrieved from the AJAX request
+  function displayHero() {
+    //Creating the variable for the query
+    var queryURL = 'http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=' +
+        hero + '&limit=10&rating=g';
+
+    // Creating the AJAX get request
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+      //callback response after the AJAX request comes back
+    }).done(function(response) {
+      console.log(response);
+      //saving the image url property
+      var imageURL = response.data.image_original_url;
+
+      //creating a div to hold the images
+      var heroDiv = $("<div class='heroes'>");
+
+      //Creating a paragraph tag for the results rating
+      var p = $("<p>").text('Rating: ' + rating);
+
+      //creating an image tag
+      var heroImage = $('<img>');
+
+      //Setting the heroImage src attributes
+      heroImage.attr("src", imageUrl);
+      heroImage.attr("alt", "superheroes");
+
+      //Appending the paragraph and images to the heroDiv
+      heroDiv.append(p);
+      heroDiv.append(heroImage);
+
+      //Prepending the heroDiv to the #heroes-view div in the HTML
+      $("#heroes-view").prepend(heroDiv);
+    });
+  }
+
+    $(document).on("click", ".hero", renderButtons);
 
   // Calling renderButtons which handles the processing of the array
   renderButtons();
