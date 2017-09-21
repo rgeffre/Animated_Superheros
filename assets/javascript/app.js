@@ -4,7 +4,8 @@
   function displayHero() {
     //Creating the variable for the query
     var hero = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=" + hero + "&limit=10&rating=G";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=" +
+        hero + "&limit=10&rating=G";
 
     // Creating the AJAX get request
     $.ajax({
@@ -29,7 +30,7 @@
         var heroImage = $('<img>');
 
         //Setting the heroImage src attributes
-        heroImage.attr("src", results[i].images.fixed_height.url);
+        heroImage.attr("src", results[i].images.fixed_height_still.url);
         heroImage.attr("alt", "superheroes");
 
         //Appending the paragraph and images to the heroDiv
@@ -39,7 +40,6 @@
         //Prepending the heroDiv to the #heroes-view div in the HTML
         $("#heroes-view").prepend(heroDiv);
       }
-
     });
   }
 
