@@ -32,8 +32,11 @@ function displayHero() {
 
       //Setting the heroImage src attributes
       heroImage.attr("src", results[i].images.fixed_height_still.url);
+      heroImage.attr("still", results[i].images.fixed_height_still.url);
+      heroImage.attr("gif", results[i].images.fixed_height.url);
+      heroImage.attr("animated", "false");
       heroImage.attr("alt", "superheroes");
-      heroImage.attr("id", "still");
+      heroImage.attr("id", "animate");
 
       //Appending the paragraph and images to the heroDiv
       heroDiv.append(p);
@@ -85,9 +88,15 @@ $("#add-hero").on("click", function(event) {
 $(document).on("click", ".hero", displayHero);
 
 //write additional code to change the still image to an animated one and back again
-//$("#still").on("click",(function(){
-//$("img", '#animated').attr('src', results[i].images.fixed_height.url);
- //    if id === animated change the image back to still
+$(document).on("click", "#animate", function() {
+  if (($this).attr("animated") === "false") {
+    $(this).attr("src", $(this).attr("gif"));
+    $(this).attr("animated", "true");
+  } else {
+    $(this).attr("src", $(this).attr("still"));
+    $(this).attr("animated", "false");
+  }
+});
 
 // Calling renderButtons which handles the processing of the array
 renderButtons();
