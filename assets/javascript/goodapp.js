@@ -84,9 +84,6 @@
    //Displays images when the Superheroes button is clicked
     $(document).on("click", ".hero", displayHero);
 
-    $('#gif').click(function() {
-      $(this).attrI('src', results[i].images.fixed_height.url);
-  });
   // Calling renderButtons which handles the processing of the array
   renderButtons();
 

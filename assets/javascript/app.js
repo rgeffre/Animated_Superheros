@@ -49,28 +49,38 @@ function displayHero() {
   });
 }
 
-// Function for displaying hero data
-function renderButtons() {
-
-  // Deleting heroes before adding new ones
-  // (this is necessary otherwise you will have repeat buttons)
-  $("#hero-buttons").empty();
-
-  // Looping through the array of heroes
-  for (var i = 0; i < heroes.length; i++) {
-
-    // Using jQuery and dynamically generating buttons for each hero in the array
-    var a = $("<button>");
-    // Adding a class of hero to our button
-    a.addClass("hero");
-    // Adding a data-attribute
-    a.attr("data-name", heroes[i]);
-    // Providing the initial button text
-    a.text(heroes[i]);
-    // Adding the button to the buttons-view div
-    $("#hero-buttons").append(a);
+$(document).on("click", "#animate", function() {
+  if ($(this).attr("animated") === "false") {
+    $(this).attr("src", $(this).attr("gif"));
+    $(this).attr("animated", "true");
+  } else {
+    $(this).attr("src", $(this).attr("still"));
+    $(this).attr("animated", "false");
   }
-}
+});
+
+// Function for displaying hero data
+  function renderButtons() {
+
+    // Deleting heroes before adding new ones
+    // (this is necessary otherwise you will have repeat buttons)
+    $("#hero-buttons").empty();
+
+    // Looping through the array of heroes
+    for (var i = 0; i < heroes.length; i++) {
+
+      // Using jQuery and dynamically generating buttons for each hero in the array
+      var a = $("<button>");
+      // Adding a class of hero to our button
+      a.addClass("hero");
+      // Adding a data-attribute
+      a.attr("data-name", heroes[i]);
+      // Providing the initial button text
+      a.text(heroes[i]);
+      // Adding the button to the buttons-view div
+      $("#hero-buttons").append(a);
+    }
+  }
 
 // This function handles events when the add-hero button is clicked
 $("#add-hero").on("click", function(event) {
@@ -86,17 +96,6 @@ $("#add-hero").on("click", function(event) {
 });
 //Displays images when the Superheroes button is clicked
 $(document).on("click", ".hero", displayHero);
-
-//write additional code to change the still image to an animated one and back again
-$(document).on("click", "#animate", function() {
-  if (($this).attr("animated") === "false") {
-    $(this).attr("src", $(this).attr("gif"));
-    $(this).attr("animated", "true");
-  } else {
-    $(this).attr("src", $(this).attr("still"));
-    $(this).attr("animated", "false");
-  }
-});
 
 // Calling renderButtons which handles the processing of the array
 renderButtons();
