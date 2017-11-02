@@ -5,7 +5,7 @@ var heroes = ['Superman', 'Batman', 'Wolverine'];
 function displayHero() {
   //Creating the variable for the query
   var hero = $(this).attr("data-name");
-  var queryURL = "https://cors.io/?u=https://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=" +
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=c3a6b1024d4240b6a7810e358792f08f&q=" +
       hero + "&limit=10&rating=G";
 
   // Creating the AJAX get request
